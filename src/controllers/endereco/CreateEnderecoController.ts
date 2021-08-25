@@ -4,8 +4,18 @@ import { CreateEnderecoService } from "../../services/endereco/CreateEnderecoSer
 class CreateEnderecoController {
   async handle(request: Request, response: Response) {
     const { logradouro, numero, complemento, bairro, cidade, estado, cep } = request.body
+    const { motorista_id } = request
     const createEndereceService = new CreateEnderecoService()
-    const endereco = await createEndereceService.execute({ logradouro, numero, complemento, bairro, cidade, estado, cep })
+    const endereco = await createEndereceService.execute({ 
+      logradouro, 
+      numero, 
+      complemento, 
+      bairro, 
+      cidade, 
+      estado, 
+      cep, 
+      motorista_id 
+    })
 
     return response.json(endereco)
   }

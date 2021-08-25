@@ -27,6 +27,9 @@ class Endereco {
   @Column()
   cep: string
 
+  @Column()
+  motorista_id: string
+
   constructor() {
     if (!this.id) {
       this.id = uuid()

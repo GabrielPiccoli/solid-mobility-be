@@ -9,10 +9,11 @@ interface IEnderecoRequest {
   cidade: string
   estado: string
   cep: string
+  motorista_id: string
 }
 
 class CreateEnderecoService {
- async execute({ logradouro, numero, complemento = null, bairro, cidade, estado, cep }: IEnderecoRequest) {
+ async execute({ logradouro, numero, complemento = null, bairro, cidade, estado, cep, motorista_id }: IEnderecoRequest) {
    const enderecoRepositories = getCustomRepository(EnderecoRepositories)
 
    if (!logradouro || !numero || !bairro || !cidade || !estado || !cep) {
@@ -26,7 +27,8 @@ class CreateEnderecoService {
     bairro,
     cidade,
     estado,
-    cep
+    cep,
+    motorista_id
    })
    await enderecoRepositories.save(endereco)
 
