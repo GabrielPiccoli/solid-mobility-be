@@ -16,6 +16,11 @@ class CreateParadaService {
     const paradaRepositories = getCustomRepository(ParadaRepositories)
     const enderecoRepositories = getCustomRepository(EnderecoRepositories)
     const rotaRepositories = getCustomRepository(RotaRepositories)
+    
+    if (ponto_final && ponto_partida) {
+      throw new Error("Uma parada não pode ser Partida e Final")
+    }
+
     const enderecoExists = await enderecoRepositories.findOne(endereco_id)
 
     if (!enderecoExists) {
