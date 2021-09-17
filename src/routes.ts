@@ -6,6 +6,7 @@ import { ListEnderecoController } from "./controllers/endereco/ListEnderecoContr
 import { UpdateEnderecoController } from "./controllers/endereco/UpdateEnderecoController";
 import { CreateMotoristaController } from "./controllers/motorista/CreateMotoristaController";
 import { DeleteMotoristaController } from "./controllers/motorista/DeleteMotoristaController";
+import { ListMotoristaController } from "./controllers/motorista/ListMotoristaController";
 import { UpdateMotoristaController } from "./controllers/motorista/UpdateMotoristaController";
 import { CreateParadaController } from "./controllers/parada/CreateParadaController";
 import { DeleteParadaController } from "./controllers/parada/DeleteParadaController";
@@ -32,6 +33,7 @@ const authenticateMotoristaController = new AuthenticateMotoristaController()
 
 //motorista controllers
 const createMotoristaController = new CreateMotoristaController()
+const listMotoristaController = new ListMotoristaController()
 const updateMotoristaController = new UpdateMotoristaController()
 const deleteMotoristaController = new DeleteMotoristaController()
 
@@ -70,6 +72,7 @@ router.post('/login', authenticateMotoristaController.handle)
 
 //motorista routes
 router.post('/motoristas', createMotoristaController.handle)
+router.get('/me', ensureAuthenticated, listMotoristaController.handle)
 router.put('/motoristas', ensureAuthenticated, updateMotoristaController.handle)
 router.delete('/motoristas', ensureAuthenticated, deleteMotoristaController.handle)
 
