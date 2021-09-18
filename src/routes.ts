@@ -3,6 +3,7 @@ import { AuthenticateMotoristaController } from "./controllers/authenticate/Auth
 import { CreateEnderecoController } from "./controllers/endereco/CreateEnderecoController";
 import { DeleteEnderecoController } from "./controllers/endereco/DeleteEnderecoController";
 import { ListEnderecoController } from "./controllers/endereco/ListEnderecoController";
+import { ListOneEnderecoController } from "./controllers/endereco/ListOneEnderecoController";
 import { UpdateEnderecoController } from "./controllers/endereco/UpdateEnderecoController";
 import { CreateMotoristaController } from "./controllers/motorista/CreateMotoristaController";
 import { DeleteMotoristaController } from "./controllers/motorista/DeleteMotoristaController";
@@ -46,6 +47,7 @@ const deleteVanController = new DeleteVanController()
 //endereco controllers
 const createEnderecoController = new CreateEnderecoController()
 const listEnderecoController = new ListEnderecoController()
+const listOneEnderecoController = new ListOneEnderecoController()
 const updateEnderecoController = new UpdateEnderecoController()
 const deleteEnderecoController = new DeleteEnderecoController
 
@@ -84,9 +86,10 @@ router.delete('/vans', ensureAuthenticated, deleteVanController.handle)
 
 //endereco routes
 router.post('/enderecos', ensureAuthenticated, createEnderecoController.handle)
+router.get('/endereco/:id', ensureAuthenticated, listOneEnderecoController.handle)
 router.get('/enderecos', ensureAuthenticated, listEnderecoController.handle)
 router.put('/enderecos', ensureAuthenticated, updateEnderecoController.handle)
-router.delete('/enderecos', ensureAuthenticated, deleteEnderecoController.handle)
+router.delete('/enderecos/:id', ensureAuthenticated, deleteEnderecoController.handle)
 
 //rota routes
 router.post('/rotas', ensureAuthenticated, createRotaController.handle)

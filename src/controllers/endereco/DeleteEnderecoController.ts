@@ -3,7 +3,7 @@ import { DeleteEnderecoService } from "../../services/endereco/DeleteEnderecoSer
 
 class DeleteEnderecoController {
   async handle(request: Request, response: Response) {
-    const { id } = request.body
+    const { id } = request.params
     const deleteEnderecoService = new DeleteEnderecoService()
     const results = await deleteEnderecoService.execute(id)
 
