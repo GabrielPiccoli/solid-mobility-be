@@ -3,7 +3,7 @@ import { DeleteVanService } from "../../services/van/DeleteVanService";
 
 class DeleteVanController {
   async handle(request: Request, response: Response) {
-    const { id } = request.body
+    const { id } = request.params
     const deleteVanService = new DeleteVanService()
     const results = await deleteVanService.execute(id)
 

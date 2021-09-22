@@ -23,6 +23,7 @@ import { ListRotaController } from "./controllers/rota/ListRotaController";
 import { UpdateRotaController } from "./controllers/rota/UpdateRotaController";
 import { CreateVanController } from "./controllers/van/CreateVanController";
 import { DeleteVanController } from "./controllers/van/DeleteVanController";
+import { ListOneVanController } from "./controllers/van/ListOneVanController";
 import { ListVanController } from "./controllers/van/ListVanController";
 import { UpdateVanController } from "./controllers/van/UpdateVanController";
 import { ensureAuthenticated } from "./middlewares/ensureAuthenticated";
@@ -40,7 +41,8 @@ const deleteMotoristaController = new DeleteMotoristaController()
 
 //van controllers
 const createVanController = new CreateVanController()
-const listaVanController = new ListVanController()
+const listVanController = new ListVanController()
+const listOneVanController = new ListOneVanController()
 const updateVanController = new UpdateVanController()
 const deleteVanController = new DeleteVanController()
 
@@ -80,9 +82,11 @@ router.delete('/motoristas', ensureAuthenticated, deleteMotoristaController.hand
 
 //van routes
 router.post('/vans', ensureAuthenticated, createVanController.handle)
-router.get('/vans', ensureAuthenticated, listaVanController.handle)
+router.get('/van/:id', ensureAuthenticated, listOneVanController.handle)
+router.get('/vans', ensureAuthenticated, listVanController.handle)
 router.put('/vans', ensureAuthenticated, updateVanController.handle)
-router.delete('/vans', ensureAuthenticated, deleteVanController.handle)
+router.delete('/vans/:id', ensureAuthenticated, deleteVanController.handle)
+
 
 //endereco routes
 router.post('/enderecos', ensureAuthenticated, createEnderecoController.handle)
