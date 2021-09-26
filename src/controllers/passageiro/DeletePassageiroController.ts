@@ -3,7 +3,7 @@ import { DeletePassageiroService } from "../../services/passageiro/DeletePassage
 
 class DeletePassageiroController {
   async handle(request: Request, response: Response) {
-    const { id } = request.body
+    const { id } = request.params
     const deletePassageiroService = new DeletePassageiroService()
     const results = await deletePassageiroService.execute(id)
 

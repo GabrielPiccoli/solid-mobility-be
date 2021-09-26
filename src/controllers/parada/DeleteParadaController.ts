@@ -3,7 +3,7 @@ import { DeleteParadaService } from "../../services/parada/DeleteParadaService";
 
 class DeleteParadaController {
   async handle(request: Request, response: Response) {
-    const { id } = request.body
+    const { id } = request.params
     const deleteParadaService = new DeleteParadaService()
     const results = await deleteParadaService.execute(id)
 
