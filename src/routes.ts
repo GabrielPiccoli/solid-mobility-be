@@ -13,6 +13,7 @@ import { CreateParadaController } from "./controllers/parada/CreateParadaControl
 import { DeleteParadaController } from "./controllers/parada/DeleteParadaController";
 import { ListOneParadaController } from "./controllers/parada/ListOneParadaController";
 import { ListParadaController } from "./controllers/parada/ListParadaController";
+import { ListParadasRotaController } from "./controllers/parada/ListParadasRotaController";
 import { UpdateParadaController } from "./controllers/parada/UpdateParadaController";
 import { CreatePassageiroController } from "./controllers/passageiro/CreatePassageiroController";
 import { DeletePassageiroController } from "./controllers/passageiro/DeletePassageiroController";
@@ -67,6 +68,7 @@ const deleteRotaController = new DeleteRotaController()
 const createParadaController = new CreateParadaController()
 const listParadaController = new ListParadaController()
 const listOneParadaController = new ListOneParadaController()
+const listParadasRotaController = new ListParadasRotaController()
 const updateParadaController = new UpdateParadaController()
 const deleteParadaController = new DeleteParadaController()
 
@@ -111,6 +113,7 @@ router.delete('/rotas/:id', ensureAuthenticated, deleteRotaController.handle)
 //parada routes
 router.post('/paradas', ensureAuthenticated, createParadaController.handle)
 router.get('/paradas', ensureAuthenticated, listParadaController.handle)
+router.get('/paradas/rota/:id', ensureAuthenticated, listParadasRotaController.handle)
 router.get('/parada/:id', ensureAuthenticated, listOneParadaController.handle)
 router.put('/paradas', ensureAuthenticated, updateParadaController.handle)
 router.delete('/paradas/:id', ensureAuthenticated, deleteParadaController.handle)
