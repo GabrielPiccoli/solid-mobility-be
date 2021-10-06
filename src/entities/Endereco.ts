@@ -28,6 +28,9 @@ class Endereco {
   cep: string
 
   @Column()
+  coordinates: string
+
+  @Column()
   motorista_id: string
 
   constructor() {

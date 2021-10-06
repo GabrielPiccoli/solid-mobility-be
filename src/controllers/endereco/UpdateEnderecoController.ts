@@ -3,7 +3,7 @@ import { UpdateEnderecoService } from "../../services/endereco/UpdateEnderecoSer
 
 class UpdateEnderecoController {
   async handle(request: Request, response: Response) {
-    const { id, logradouro, numero, complemento, bairro, cidade, estado, cep } = request.body
+    const { id, logradouro, numero, complemento, bairro, cidade, estado, cep, coordinates } = request.body
     const updateEnderecoService = new UpdateEnderecoService()
     const endereco = await updateEnderecoService.execute({
       id,
@@ -13,7 +13,8 @@ class UpdateEnderecoController {
       bairro, 
       cidade, 
       estado, 
-      cep
+      cep,
+      coordinates
     })
 
     return response.json(endereco)

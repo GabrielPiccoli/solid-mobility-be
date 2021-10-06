@@ -9,14 +9,15 @@ interface IEnderecoRequest {
   cidade: string
   estado: string
   cep: string
+  coordinates: string
   motorista_id: string
 }
 
 class CreateEnderecoService {
- async execute({ logradouro, numero, complemento = null, bairro, cidade, estado, cep, motorista_id }: IEnderecoRequest) {
+ async execute({ logradouro, numero, complemento = null, bairro, cidade, estado, cep, coordinates, motorista_id }: IEnderecoRequest) {
    const enderecoRepositories = getCustomRepository(EnderecoRepositories)
 
-   if (!logradouro || !numero || !bairro || !cidade || !estado || !cep) {
+   if (!logradouro || !numero || !bairro || !cidade || !estado || !cep || !coordinates) {
      throw new Error("Existem informações em falta")
    }
 
@@ -28,6 +29,7 @@ class CreateEnderecoService {
     cidade,
     estado,
     cep,
+    coordinates,
     motorista_id
    })
    await enderecoRepositories.save(endereco)

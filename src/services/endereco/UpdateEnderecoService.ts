@@ -10,10 +10,11 @@ interface IEnderecoRequest {
   cidade: string
   estado: string
   cep: string
+  coordinates: string
 }
 
 class UpdateEnderecoService {
-  async execute({ id, logradouro, numero, complemento = "", bairro, cidade, estado, cep }: IEnderecoRequest) {
+  async execute({ id, logradouro, numero, complemento = "", bairro, cidade, estado, cep, coordinates }: IEnderecoRequest) {
     const enderecosRepositories = getCustomRepository(EnderecoRepositories)
     const endereco = await enderecosRepositories.findOne(id)
 
@@ -28,7 +29,8 @@ class UpdateEnderecoService {
       bairro,
       cidade,
       estado,
-      cep
+      cep,
+      coordinates
     })
     const newEndereco = await enderecosRepositories.save(endereco)
 
