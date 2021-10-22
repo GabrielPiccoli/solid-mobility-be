@@ -1,9 +1,9 @@
 {
   "type": "mysql",
-  "host": "localhost",
+  "host": "db4free.net",
   "port": "3306",
-  "username": "root",
-  "password": "LG200116",
+  "username": "solidmobility",
+  "password": "@Lg200116",
   "database": "solidmobility",
   "migrations": ["src/database/migrations/*.ts"],
   "entities": ["src/entities/*.ts"],
